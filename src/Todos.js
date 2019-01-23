@@ -4,9 +4,8 @@ const Todos = ({todos, handleDelete}) => {
     const todoList = todos.length > 0 ? (
         todos.map(todo => {
             return (
-                <div className="collection-item" key={todo.id}>
+                <div onClick={() => {handleDelete(todo.id)}} className="collection-item" key={todo.id}>
                     <span>{todo.content}</span>
-                    <button onClick={() => {handleDelete(todo.id)}}>Delete</button>
                 </div>
             )
         })
