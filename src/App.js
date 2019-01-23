@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Todos from "./Todos";
 
 class App extends Component {
   state = {
@@ -7,11 +8,20 @@ class App extends Component {
       {id: 2, content: "do the dishes"}
     ]
   }
+
+  handleDelete = (id) => {
+    const todos = this.state.todos.filter(todo => {
+      return todo.id !== id;
+    });
+    this.setState({
+      todos: todos
+    })
+  }
   render() {
     return (
-      <div className="App">
-        <h1>Not my first react app</h1>
-        <p>Reviewing Redux</p>
+      <div className="todo-app container">
+        <h1 className="center blue-text">Todo List</h1>
+        <Todos todos={this.state.todos} handleDelete={this.handleDelete}/>
       </div>
     );
   }
